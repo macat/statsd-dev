@@ -10,7 +10,11 @@ $stdout.sync = true
 
 c = Term::ANSIColor
 s = UDPSocket.new
-s.bind(nil, ENV.fetch('PORT', 8125))
+port = ENV.fetch('PORT', 8125)
+s.bind(nil, port)
+
+puts "Statsd Dev Server Started on port #{ port }"
+
 while blob = s.recvfrom(1024)
   metric, value = blob.first.split(':')
   puts "StatsD Metric: #{c.blue(metric)} #{c.green(value)}"
