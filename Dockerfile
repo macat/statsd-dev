@@ -1,9 +1,9 @@
-FROM ruby:2.2
+FROM ruby:2.3.1-alpine
+
+RUN gem install term-ansicolor
 
 RUN mkdir /app
 WORKDIR /app
 ADD . /app
-
-RUN gem install term-ansicolor
 
 CMD ruby statsd.rb
