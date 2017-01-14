@@ -11,7 +11,7 @@ $stdout.sync = true
 c = Term::ANSIColor
 s = UDPSocket.new
 port = ENV.fetch('PORT', 8125)
-s.bind(nil, port)
+s.bind('0.0.0.0', port)
 
 puts "Statsd Dev Server Started on port #{ port }"
 
