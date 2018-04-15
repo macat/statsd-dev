@@ -16,6 +16,6 @@ s.bind('0.0.0.0', port)
 puts "Statsd Dev Server Started on port #{ port }"
 
 while blob = s.recvfrom(1024)
-  metric, value = blob.first.split(':')
+  metric, value = blob.first.split(':', 2)
   puts "StatsD Metric: #{c.blue(metric)} #{c.green(value)}"
 end
